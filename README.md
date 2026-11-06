@@ -1,7 +1,7 @@
-<h1 align="center">Chrome 答题协作</h1>
+<h1 align="center">AI 网络答题自动化 Skill</h1>
 
 <p align="center">
-  为网页练习设计的中文 Agent Skill。读题或按标准答案勾选，逐题核对，由你交卷。
+  通过浏览器扩展连接 Chrome。AI 读题或按标准答案勾选，逐题核对，由你交卷。
 </p>
 
 <p align="center">
@@ -85,6 +85,8 @@ git clone https://github.com/Ruoyu-Tianyi/chrome-quiz-copilot.git .agents/skills
 ## 接入 Chrome
 
 Skill 定义答题流程。Chrome 控制能力由智能体宿主或浏览器插件提供，安装 Skill 后需单独连接。默认使用你已经打开题目的 Chrome 标签页。
+
+使用 Playwright MCP 的扩展模式时，底层通过 `chrome.debugger` 传输 Chrome DevTools Protocol（CDP）指令。使用宿主自带的浏览器连接时，底层实现由宿主决定。[Playwright 扩展源码](https://github.com/microsoft/playwright/blob/main/packages/extension/src/relayConnection.ts) · [Chrome 扩展 API](https://developer.chrome.com/docs/extensions/reference/api/debugger)
 
 1. **已有原生 Chrome 集成。** 优先使用宿主已有的连接，例如 [Codex 桌面端的 Chrome 扩展](https://learn.chatgpt.com/docs/chrome-extension) 或 [Claude Code 的 Chrome 集成](https://code.claude.com/docs/en/chrome)。
 2. **只有本地 MCP 支持。** 安装 [Microsoft Playwright 浏览器扩展](https://github.com/microsoft/playwright/blob/main/packages/extension/README.md)，并按宿主的设置方式添加 Playwright MCP。运行端需要 Node.js 和 `npx`。下面是常见的 JSON 写法，配置位置和外层结构以宿主文档为准。
